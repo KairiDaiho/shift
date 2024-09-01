@@ -28,7 +28,6 @@ function selectClassDate(date) {
     }
 }
 
-
 function submitData() {
     const name = document.getElementById('nameInput').value;
 
@@ -42,22 +41,18 @@ function submitData() {
 
     fetch(scriptURL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
-        mode: 'no-cors'
+        headers: { 'Content-Type': 'application/json' },
+        mode: 'no-cors' // CORSを回避するために追加
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.result === 'success') {
-            alert("Shift submission completed!");
-        } else {
-            alert("Error: " + data.message);
-        }
+    .then(response => {
+        alert("Shift submission completed! (Note: Response cannot be checked due to 'no-cors' mode)");
     })
     .catch(error => {
         console.error('Error:', error);
         alert("Error: " + error.message);
     });
 }
+
 
 
