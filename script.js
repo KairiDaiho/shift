@@ -42,8 +42,9 @@ function submitData() {
 
     fetch(scriptURL, {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
+        mode: 'no-cors'
     })
     .then(response => response.json())
     .then(data => {
@@ -58,8 +59,5 @@ function submitData() {
         alert("Error: " + error.message);
     });
 }
-
-
-
 
 
