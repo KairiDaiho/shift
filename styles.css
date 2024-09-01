@@ -1,0 +1,100 @@
+body {
+    background-color: #002f6c;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.step {
+    margin: 20px;
+    padding: 20px;
+}
+
+input[type="text"] {
+    margin: 10px 0;
+    padding: 10px;
+    width: 300px;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #004080; /* 背景色を追加 */
+}
+
+button:hover {
+    background-color: #ff0000;
+    color: #ffffff; /* ホバー時の色を強調 */
+}
+
+.date-button {
+    display: block;
+    width: 200px;
+    margin: 5px auto;
+    padding: 10px;
+    background-color: #004080;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.date-button:hover {
+    background-color: #ff0000;
+    color: #ffffff; /* ホバー時の色を強調 */
+}
+
+
+/* カレンダースタイル */
+.calendar {
+    margin: 20px auto;
+}
+
+.calendar table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar th, .calendar td {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #ffffff;
+}
+
+.calendar td:hover {
+    background-color: #ff0000;
+}
+
+/* 日付リストスタイル */
+.dates-list {
+    margin: 20px;
+}
+
+.date-button {
+    display: block;
+    width: 200px;
+    margin: 5px auto;
+    padding: 10px;
+    background-color: #004080;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.date-button:hover {
+    background-color: #ff0000;
+}
+
+.selected-list {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #000000;
+    color: #ffffff;
+}
