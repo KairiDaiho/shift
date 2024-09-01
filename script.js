@@ -38,7 +38,7 @@ function submitData() {
         classDates: selectedClassDates.join(", ")
     };
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyvcJrQkv8YDbytDHP1fBg3oZDeEMkuvnP1OCxcIRn1hdbFjaFWY_vjKoYF0pkWHjS7/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwN4JArCaC_e4z3x1A6JDbjcUk7Cl1pXJnDaU71ecbhh4LVNlvc5z3nNnWu4PJ6WG-k/exec';
 
     fetch(scriptURL, {
         method: 'POST',
@@ -58,6 +58,7 @@ function submitData() {
         alert("Error: " + error.message);
     });
 }
+
 
 
 
