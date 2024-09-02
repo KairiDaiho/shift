@@ -110,13 +110,19 @@
         <p>Name: <span id="confirmName"></span></p>
         <p>Study Abroad Space: <span id="confirmDates"></span></p>
         <p>Class1 Trial Session: <span id="confirmClassDates"></span></p>
-        <form id="googleForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSerrZk-3mfhsP0TBvJ5PT_N3FyeGbrxBgvQXTBa-XSGJQ8EOQ/formResponse" method="POST">
+        <form id="googleForm" onsubmit="handleSubmit(event)">
             <input type="hidden" name="entry.2140755402" id="hiddenName"> <!-- 名前 -->
             <input type="hidden" name="entry.1945471040" id="hiddenDates"> <!-- Study Abroad Space -->
             <input type="hidden" name="entry.664574912" id="hiddenClassDates"> <!-- Class1 Trial Session -->
             <button type="button" onclick="goToStep(1)">Back</button>
             <button type="submit">Complete</button>
         </form>
+    </div>
+
+    <!-- 送信完了メッセージ画面 -->
+    <div id="completionMessage" class="step" style="display:none;">
+        <h2>回答ありがとうございました！</h2>
+        <p>シフトの送信が完了しました。</p>
     </div>
 
     <script src="script.js"></script>
