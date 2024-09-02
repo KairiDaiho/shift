@@ -29,7 +29,7 @@ function selectClassDate(date) {
 }
 
 function submitToGoogleForm() {
-    const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSerrZk-3mfhsP0TBvJ5PT_N3FyeGbrxBgvQXTBa-XSGJQ8EOQ/viewform'; // フォームの送信URL
+    const formURL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSerrZk-3mfhsP0TBvJ5PT_N3FyeGbrxBgvQXTBa-XSGJQ8EOQ/formResponse'; // フォームの送信URL
 
     // Googleフォームの各フィールドIDを設定
     const data = new URLSearchParams();
