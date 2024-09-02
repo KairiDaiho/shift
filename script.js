@@ -23,7 +23,7 @@ function selectDate(date) {
 function selectClassDate(date) {
     if (!selectedClassDates.includes(date)) {
         selectedClassDates.push(date);
-        selectedClassDates.sort(); // 文字列としてソート (日付は文字列形式なので直接ソートします)
+        selectedClassDates.sort(); // Sorts alphabetically by default
         document.getElementById('selectedClassDates').innerText = selectedClassDates.join(", ");
     }
 }
@@ -37,21 +37,27 @@ function submitData() {
         classDates: selectedClassDates.join(", ")
     };
 
-    const proxyURL = 'http://localhost:1512/submit'; // Node.jsサーバーのURL
+    const proxyURL = 'http://localhost:1521/submit'; // URL of your local Node.js server
 
     fetch(proxyURL, {
         method: 'POST',
         body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' },
-        mode: 'no-cors' // モードをno-corsに設定
+        headers: { 'Content-Type': 'application/json' }
     })
-    .then(response => {
-        alert("Shift submission completed! (Note: Response cannot be checked due to 'no-cors' mode)");
+    .then(response => response.json())
+    .then(data => {
+        if (data.result === 'success') {
+            alert("Shift submission completed!");
+        } else {
+            alert("Error: " + data.message);
+        }
     })
     .catch(error => {
         console.error('Error:', error);
         alert("Error: " + error.message);
     });
 }
+
+
 
 

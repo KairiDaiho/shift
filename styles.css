@@ -45,6 +45,7 @@ button:hover {
 
 .date-button:hover {
     background-color: #ff0000;
+    color: #ffffff;
 }
 
 .calendar {
@@ -74,3 +75,4 @@ button:hover {
     background-color: #000000;
     color: #ffffff;
 }
+
