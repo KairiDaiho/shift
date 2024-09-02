@@ -23,40 +23,30 @@ function selectDate(date) {
 function selectClassDate(date) {
     if (!selectedClassDates.includes(date)) {
         selectedClassDates.push(date);
-        selectedClassDates.sort(); // Sorts alphabetically by default
+        selectedClassDates.sort();
         document.getElementById('selectedClassDates').innerText = selectedClassDates.join(", ");
     }
 }
 
-function submitData() {
-    const name = document.getElementById('nameInput').value;
+function submitToGoogleForm() {
+    const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSerrZk-3mfhsP0TBvJ5PT_N3FyeGbrxBgvQXTBa-XSGJQ8EOQ/viewform'; // フォームの送信URL
 
-    const data = {
-        name: name,
-        dates: selectedDates.join(", "),
-        classDates: selectedClassDates.join(", ")
-    };
+    // Googleフォームの各フィールドIDを設定
+    const data = new URLSearchParams();
+    data.append('entry.2140755402', document.getElementById('nameInput').value); // "名前" フィールドID
+    data.append('entry.1945471040', selectedDates.join(", ")); // "Study Abroad Space" フィールドIDを使用
+    data.append('entry.664574912', selectedClassDates.join(", ")); // "Class1 Trial Session" フィールドIDを使用
 
-    const proxyURL = 'http://localhost:1521/submit'; // URL of your local Node.js server
-
-    fetch(proxyURL, {
+    fetch(formURL, {
         method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
+        body: data,
+        mode: 'no-cors'
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.result === 'success') {
-            alert("Shift submission completed!");
-        } else {
-            alert("Error: " + data.message);
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert("Error: " + error.message);
-    });
+    .then(response => alert("Shift submission completed!"))
+    .catch(error => console.error('Error:', error));
 }
+
+
 
 
 
