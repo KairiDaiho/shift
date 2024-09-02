@@ -37,22 +37,24 @@ function submitData() {
         classDates: selectedClassDates.join(", ")
     };
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwN4JArCaC_e4z3x1A6JDbjcUk7Cl1pXJnDaU71ecbhh4LVNlvc5z3nNnWu4PJ6WG-k/exec';
+    const proxyURL = 'http://localhost:1510/submit'; // Node.jsサーバーのURL
 
-    fetch(scriptURL, {
+    fetch(proxyURL, {
         method: 'POST',
         body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' },
-        mode: 'no-cors' // CORSを回避するために追加
+        headers: { 'Content-Type': 'application/json' }
     })
-    .then(response => {
-        alert("Shift submission completed! (Note: Response cannot be checked due to 'no-cors' mode)");
+    .then(response => response.json())
+    .then(data => {
+        if (data.result === 'success') {
+            alert("Shift submission completed!");
+        } else {
+            alert("Error: " + data.message);
+        }
     })
     .catch(error => {
         console.error('Error:', error);
         alert("Error: " + error.message);
     });
 }
-
-
 
