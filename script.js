@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.handleSubmit = function (event) {
         event.preventDefault(); // フォームのデフォルトの送信をキャンセル
 
-        const formURL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSerrZk-3mfhsP0TBvJ5PT_N3FyeGbrxBgvQXTBa-XSGJQ8EOQ/formResponse'; // フォームの送信URL
+        const formURL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSerrZk-3mfhsP0TBvJ5PT_N3FyeGbrxBgvQXTBa-XSGJQ8EOQ/formResponse';
         const formData = new FormData(document.getElementById('googleForm'));
 
         const xhr = new XMLHttpRequest();
@@ -78,21 +78,12 @@ document.addEventListener('DOMContentLoaded', function () {
         };
 
         // フォームデータをURLエンコードして送信
-        const params = new URLSearchParams();
+        let params = '';
         formData.forEach((value, key) => {
-            params.append(key, value);
+            params += `${encodeURIComponent(key)}=${encodeURIComponent(value)}&`;
         });
 
-        xhr.send(params.toString());
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(params.slice(0, -1)); // 最後の&を削除して送信
     }
 });
-
-
-
-
-
-
-
-
-
-
