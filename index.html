@@ -110,16 +110,13 @@
         <p>Name: <span id="confirmName"></span></p>
         <p>Study Abroad Space: <span id="confirmDates"></span></p>
         <p>Class1 Trial Session: <span id="confirmClassDates"></span></p>
-        <!-- フォーム送信をiframeを使用 -->
-        <form id="googleForm" onsubmit="handleSubmit(event)" target="hidden_iframe">
+        <form id="googleForm" onsubmit="handleSubmit(event)">
             <input type="hidden" name="entry.2140755402" id="hiddenName"> <!-- 名前 -->
             <input type="hidden" name="entry.1945471040" id="hiddenDates"> <!-- Study Abroad Space -->
             <input type="hidden" name="entry.664574912" id="hiddenClassDates"> <!-- Class1 Trial Session -->
             <button type="button" onclick="goToStep(1)">Back</button>
             <button type="submit">Complete</button>
         </form>
-        <!-- 非表示のiframe -->
-        <iframe name="hidden_iframe" style="display:none;" onload="showCompletionMessage()"></iframe>
     </div>
 
     <!-- 送信完了メッセージ画面 -->
@@ -131,6 +128,5 @@
     <script src="script.js"></script>
 </body>
 </html>
-
 
 
