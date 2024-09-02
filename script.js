@@ -23,25 +23,33 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     window.selectDate = function (date) {
+        const dateCell = document.querySelector(`td[onclick="selectDate('${date}')"]`);
+        
         if (selectedDates.includes(date)) {
             // 選択解除
             selectedDates = selectedDates.filter(d => d !== date);
+            dateCell.style.backgroundColor = ''; // 背景色を元に戻す
         } else {
             // 日付を選択
             selectedDates.push(date);
             selectedDates.sort((a, b) => new Date(a) - new Date(b));
+            dateCell.style.backgroundColor = '#ff0000'; // 選択した日付の背景色を変更
         }
         document.getElementById('selectedDates').innerText = selectedDates.join(", ");
     }
 
     window.selectClassDate = function (date) {
+        const dateButton = document.querySelector(`button[onclick="selectClassDate('${date}')"]`);
+
         if (selectedClassDates.includes(date)) {
             // 選択解除
             selectedClassDates = selectedClassDates.filter(d => d !== date);
+            dateButton.style.backgroundColor = '#004080'; // 元の背景色に戻す
         } else {
             // 日付を選択
             selectedClassDates.push(date);
             selectedClassDates.sort((a, b) => new Date(a) - new Date(b));
+            dateButton.style.backgroundColor = '#ff0000'; // 選択した日付の背景色を変更
         }
         document.getElementById('selectedClassDates').innerText = selectedClassDates.join(", ");
     }
@@ -51,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const formURL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSerrZk-3mfhsP0TBvJ5PT_N3FyeGbrxBgvQXTBa-XSGJQ8EOQ/formResponse'; // フォームの送信URL
         const formData = new FormData(document.getElementById('googleForm'));
-        
+
         const xhr = new XMLHttpRequest();
         xhr.open('POST', formURL, true);
 
@@ -69,9 +77,16 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Request failed.');
         };
 
-        xhr.send(new URLSearchParams(formData).toString());
+        // フォームデータをURLエンコードして送信
+        const params = new URLSearchParams();
+        formData.forEach((value, key) => {
+            params.append(key, value);
+        });
+
+        xhr.send(params.toString());
     }
 });
+
 
 
 
