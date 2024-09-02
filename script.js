@@ -57,6 +57,10 @@ document.addEventListener('DOMContentLoaded', function () {
     window.handleSubmit = function (event) {
         event.preventDefault(); // フォームのデフォルトの送信をキャンセル
 
+        // 即座に送信完了メッセージ画面（Step 5）に遷移
+        goToStep(5);
+
+        // Googleフォームへのデータ送信処理
         const formURL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSerrZk-3mfhsP0TBvJ5PT_N3FyeGbrxBgvQXTBa-XSGJQ8EOQ/formResponse';
         const formData = new FormData(document.getElementById('googleForm'));
 
@@ -65,9 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         xhr.onload = function () {
             if (xhr.status >= 200 && xhr.status < 400) {
-                // 送信が成功した場合、送信完了メッセージを表示
-                document.querySelectorAll('.step').forEach(step => step.style.display = 'none');
-                document.getElementById('completionMessage').style.display = 'block';
+                console.log('Form submission successful.');
             } else {
                 console.error('Error occurred during submission.');
             }
